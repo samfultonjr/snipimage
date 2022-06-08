@@ -94,6 +94,9 @@
                       <div class="file-upload-inside-text">Upload Image</div>
                       <input type="file" id="files" name="files" multiple accept="image/*" class="upload-space stackable">
                       <div class="file-preview-container">
+                          <div hidden class="file-wrapper">
+                            <img class="file-preview" src="" alt="">
+                          </div>
                       </div>
                   </div>
                       <div class="size-container">
@@ -142,7 +145,8 @@
     </script>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-beta/cropper.min.js" integrity="sha512-BElV2mz/xl8EHjF95k5qWcXWX28VahaYejkixMk04pwUz3i+TxbTKr4neBkor2S8R9v/0fqGz4ViFo/qrIyq7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.11/dist/cropper.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.11/dist/cropper.css" rel="stylesheet">
 
     <script src="./scripts/base.js"></script>
     <script src="./scripts/snip.js"></script>
