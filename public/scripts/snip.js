@@ -20,6 +20,9 @@ const flipVerticalToggleEl = document.querySelector('.flip-vertical-toggle');
 class Upload {
     file = null;
     cropper = null;
+    ratioLocked = true;
+    horizontalFlipped = false;
+    verticalFlipped = false;
 
     constructor() {
         this.init();
@@ -37,6 +40,24 @@ class Upload {
     }
 
 
+    async getMediaDimension(file) {
+        return new Promise((resolve, reject) => {
+            const e = file.isVideo ? document.createElement('video') : document.createElement('img');
+            if(file.isVideo) {
+                e.addEventListener("loadeddata", (event)=> {
+                    resolve({width: e.videoWidth, height: e.videoHeight});
+                });
+            }  else {
+                e.onload = ()=> {
+                    resolve({width: e.width, height: e.height});
+                };
+            }
+            e.src = window.URL.createObjectURL(file);
+        })
+
+    }
+
+
     // Load file preview
     async refreshPreview () {
         if(this.file) {
@@ -47,8 +68,11 @@ class Upload {
             fileWrapperEl.style.width = '100%';
             fileInsideText.hidden = true;      
             if(this.cropper) this.cropper.destroy();
+
+            let dims = await this.getMediaDimension(this.file);
+
             this.cropper = new Cropper(filePreviewEl, {
-                // aspectRatio: 16 / 9,
+                aspectRatio: (this.ratioLocked ? dims.width / dims.height : null),
                 crop(event) {
                 //   console.log(event.detail.x);
                 //   console.log(event.detail.y);
@@ -60,10 +84,11 @@ class Upload {
                 },
               });
         } else {
+            this.cropper.destroy();
             filePreviewEl.id = ''            
             filePreviewEl.src = '';
             fileWrapperEl.hidden = true;
-            fileInsideText.hidden = false;
+            fileWrapperEl.style.width = '100%';
         }
 
     }
@@ -96,7 +121,10 @@ class Upload {
     }
 
 
- 
+    removeFile () {
+        this.file = null;
+        this.refreshPreview();
+    }
 
 
     async init() {
@@ -146,7 +174,8 @@ class Upload {
 
         lockToggleEl.addEventListener('click', () => {
            if(this.cropper) {
-            
+            this.ratioLocked = !this.ratioLocked;
+            this.refreshPreview();
            }
         });
 
@@ -178,13 +207,25 @@ class Upload {
 
         flipHorizontalToggleEl.addEventListener('click', () => {
             if(this.cropper) {
-                this.cropper.scaleX(-1);
+                if(this.horizontalFlipped){
+                    this.cropper.scaleX(1);
+                    this.horizontalFlipped = false;
+                } else {
+                    this.cropper.scaleX(-1);
+                    this.horizontalFlipped = true;
+                }        
             }
         });
 
         flipVerticalToggleEl.addEventListener('click', () => {
             if(this.cropper) {
-                this.cropper.scaleY(-1);
+                if(this.verticalFlipped){
+                    this.cropper.scaleY(1);
+                    this.verticalFlipped = false;
+                } else {
+                    this.cropper.scaleY(-1);
+                    this.verticalFlipped = true;
+                }   
             }
         });
 
@@ -194,10 +235,7 @@ class Upload {
         // SUBMIT BUTTON
         const submitButton = document.querySelector('.submit-button');
         submitButton.addEventListener('click', async () => {
-            try {
-                analytics.logEvent('upload-submit');
-            } catch(err) {}
-            if(this.files.length == 0) {
+            if(!this.file) {
                 prompt.add({
                     message: 'No files were selected', 
                     level: 2, 
@@ -206,15 +244,22 @@ class Upload {
                 
                 return;
             }
-            // const fileIds = await this.uploadFiles();
-            // const postId = await this.uploadMeta(fileIds);
-            // window.location.replace(`http://picbun.com/p/${postId}`);;
-            submitButton.classList.add('disabled');
+
             try {
-                await this.launch();
-            } catch (e) {
-                // prompt.add({message: e, level: 2, duration: 5000});
-            }
+                analytics.logEvent('snip-submit');
+            } catch(err) {}
+            submitButton.classList.add('disabled');
+
+         
+
+
+            let croppedCanvas = (await this.cropper.getCroppedCanvas());
+            let durl = croppedCanvas.toDataURL();
+
+            this.removeFile();
+
+            filePreviewEl.src = durl;
+
             submitButton.classList.remove('disabled');
         });
         // SUBMIT BUTTON
