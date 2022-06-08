@@ -16,6 +16,9 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+     
     ]
   },
   "storage": {

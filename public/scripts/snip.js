@@ -8,8 +8,18 @@ const fileWrapperEl = document.querySelector('.file-wrapper');
 const filePreviewEl = document.querySelector('.file-preview');
 
 
+const lockToggleEl = document.querySelector('.lock-toggle');
+const zoomInToggleEl = document.querySelector('.zoom-in-toggle');
+const zoomOutToggleEl = document.querySelector('.zoom-out-toggle');
+const spinRightToggleEl = document.querySelector('.spin-right-toggle');
+const spinLeftToggleEl = document.querySelector('.spin-left-toggle');
+const flipHorizontalToggleEl = document.querySelector('.flip-horizontal-toggle');
+const flipVerticalToggleEl = document.querySelector('.flip-vertical-toggle');
+
+
 class Upload {
     file = null;
+    cropper = null;
 
     constructor() {
         this.init();
@@ -34,17 +44,19 @@ class Upload {
             const DURL =  window.URL.createObjectURL(this.file);
             filePreviewEl.src = DURL;
             fileWrapperEl.hidden = false;   
+            fileWrapperEl.style.width = '100%';
             fileInsideText.hidden = true;      
-            const cropper = new Cropper(filePreviewEl, {
-                aspectRatio: 16 / 9,
+            if(this.cropper) this.cropper.destroy();
+            this.cropper = new Cropper(filePreviewEl, {
+                // aspectRatio: 16 / 9,
                 crop(event) {
-                  console.log(event.detail.x);
-                  console.log(event.detail.y);
-                  console.log(event.detail.width);
-                  console.log(event.detail.height);
-                  console.log(event.detail.rotate);
-                  console.log(event.detail.scaleX);
-                  console.log(event.detail.scaleY);
+                //   console.log(event.detail.x);
+                //   console.log(event.detail.y);
+                //   console.log(event.detail.width);
+                //   console.log(event.detail.height);
+                //   console.log(event.detail.rotate);
+                //   console.log(event.detail.scaleX);
+                //   console.log(event.detail.scaleY);
                 },
               });
         } else {
@@ -84,6 +96,9 @@ class Upload {
     }
 
 
+ 
+
+
     async init() {
         // FILE DROP ZONE
         const dropZone = document.querySelector('.upload-space');
@@ -120,9 +135,61 @@ class Upload {
                 this.addFile(file);
             }
             selectButton.value = '';
-            this.refreshPreviews();
+            this.refreshPreview();
         });
         // FILE CLICK SELECT
+
+
+
+
+        // Controls Listeners
+
+        lockToggleEl.addEventListener('click', () => {
+           if(this.cropper) {
+            
+           }
+        });
+
+        zoomInToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.zoom(0.1);
+            }
+        });
+
+        zoomOutToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.zoom(-0.1);
+            }
+        });
+
+
+        spinRightToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.rotate(45);
+            }
+        });
+
+        
+        spinLeftToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.rotate(-45);
+            }
+        });
+
+        flipHorizontalToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.scaleX(-1);
+            }
+        });
+
+        flipVerticalToggleEl.addEventListener('click', () => {
+            if(this.cropper) {
+                this.cropper.scaleY(-1);
+            }
+        });
+
+
+
 
         // SUBMIT BUTTON
         const submitButton = document.querySelector('.submit-button');

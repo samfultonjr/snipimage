@@ -114,12 +114,13 @@
 .submit-button {
     font-family: 'Lexend Deca', sans-serif;
     font-size: 1rem;
+    font-weight: 700;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     float: right;
-    background-color: var(--third);
-    color: var(--white);
+    background-color: var(--accent);
+    color: var(--primary);
     border: none;
     outline: none;
     border-radius: 5px;
@@ -133,7 +134,7 @@
 
 .upload-space {
     opacity: 0;
-    height: 90%;
+    height: 80%;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -504,6 +505,10 @@
     color: var(--accent);
   }
 
+
+  .icon-lock {
+      padding-left: 5px;
+  }
 
   .rotate-90 {
     transform: rotate(-90deg);
