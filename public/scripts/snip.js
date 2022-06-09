@@ -82,13 +82,14 @@ class Upload {
                 //   console.log(event.detail.scaleX);
                 //   console.log(event.detail.scaleY);
                 },
+                // fillColor: '#000'
               });
         } else {
             this.cropper.destroy();
             filePreviewEl.id = ''            
             filePreviewEl.src = '';
             fileWrapperEl.hidden = true;
-            fileWrapperEl.style.width = '100%';
+            filePreviewEl.style.width = '100%';
         }
 
     }

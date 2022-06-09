@@ -80,17 +80,16 @@ html, body {
     text-align: center;
     color: var(--third);
 
-    background: 
+    background: var(--fourth);
     /* linear-gradient( 45deg,
       #f098f359, 
       #b898f34f
     ); */
 
-    radial-gradient(
+    /* radial-gradient(
       var(--accent-lighter), 
       var(--accent2light)
-      /* var(--accent-lighter) */
-    );
+    ); */
 
 
     /* url('/resources/image-upload-2.png') no-repeat center center; */
@@ -110,7 +109,8 @@ html, body {
 
 
 .file-upload-container-large {
-  min-height: 200px;
+  /* min-height: 300px; */
+  min-height: 40vh;
 }
 
 
@@ -138,7 +138,7 @@ html, body {
 
 .upload-space {
     opacity: 0;
-    height: 80%;
+    height: calc(100% - 60px);
     width: 100%;
     margin: 0;
     padding: 0;
@@ -454,10 +454,10 @@ html, body {
 
 
 .file-upload-inside-text {
-    margin-top: 90px;
+    line-height: 50vh;
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--grey-white);
 }
 
 
@@ -475,7 +475,7 @@ html, body {
 
 .upload-controls-toggle {
     padding-bottom: 5px;
-    color: var(--accent);
+    color: var(--grey-white);
     /* padding-left: 5px; */
     font-size: 0.9rem;
     user-select: none;
@@ -488,7 +488,7 @@ html, body {
     margin-right: 2%;
     padding-top: 5px;
     border-radius: 5px;
-    background-color: var(--third);
+    background-color: var(--fourth);
     /* min-width: 20px; */
     width: calc(72% / 7);
     text-align: center;
@@ -504,9 +504,9 @@ html, body {
     width: 1em;
     height: 1em;
     stroke-width: 0;
-    stroke: var(--accent);
-    fill: var(--accent);
-    color: var(--accent);
+    stroke: var(--grey-white);
+    fill: var(--grey-white);
+    color: var(--grey-white);
   }
 
 
