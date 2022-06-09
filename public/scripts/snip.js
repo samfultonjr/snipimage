@@ -88,7 +88,7 @@ class Upload {
             this.cropper.destroy();
             filePreviewEl.id = ''            
             filePreviewEl.src = '';
-            filePreviewEl.hidden = true;
+            filePreviewEl.hidden = false;
             filePreviewEl.style.width = '100%';
         }
 

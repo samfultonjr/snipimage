@@ -16,7 +16,7 @@ html, body {
     padding-top: 10px;
     overflow: hidden;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 50px;
 }
 
@@ -129,7 +129,7 @@ html, body {
     outline: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 70px;
+    margin-top: 80px;
     margin-bottom: 10px;
 
 }
@@ -219,7 +219,7 @@ html, body {
     margin-top: 7px;
     padding-right: 15px;
     font-size: 0.9rem;
-    margin-top: 77px;
+    margin-top: 87px;
     /* margin-bottom: 10px; */
 }
 
