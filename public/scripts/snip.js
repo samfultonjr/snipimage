@@ -94,6 +94,7 @@ class Upload {
                 // fillColor: '#000'
               });
               document.querySelector('.upload-space').hidden = true;
+              document.querySelector('.submit-button').classList.remove('hidden-disabled');
         } else if( this.stateType === 'save') {
             // displaying final product
             this.cropper.destroy();
@@ -108,6 +109,7 @@ class Upload {
             document.querySelector('.download-url').download = this.uuid() + '-snipImage';
             document.querySelector('.download-url').href = filePreviewEl.src;
             document.querySelector('.download-url').title = 'snip';
+            document.querySelector('.submit-button').classList.add('hidden-disabled');
         } else if( this.stateType === 'upload') {
             // back to original upload page
             this.cropper.destroy();
@@ -125,6 +127,7 @@ class Upload {
             this.ratioLocked = true;
             this.horizontalFlipped = false;
             this.verticalFlipped = false;
+            document.querySelector('.submit-button').classList.add('hidden-disabled');
         }
 
     }

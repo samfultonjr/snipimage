@@ -550,7 +550,7 @@ html, body {
 
   .save-control {
     background-color: var(--fourth);  
-    color: var(--accent);
+    color: var(--grey-white);
     width: 45%;
     height: 30px;
     font-weight: 700;
@@ -562,4 +562,9 @@ html, body {
     text-align: center;
     float: left;
     cursor: pointer;
+  }
+
+
+  .download-control {
+      color: var(--accent);
   }

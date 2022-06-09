@@ -496,3 +496,12 @@ video::-webkit-media-controls-panel, video::-webkit-media-controls-timeline {
     box-shadow: 0px 0px 4px var(--accent);  */
     opacity: 0.5;
 }
+
+
+.hidden-disabled {
+    opacity: 0;
+    pointer-events: none;
+    cursor: none;
+    visibility: hidden;
+    
+}
