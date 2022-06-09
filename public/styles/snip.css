@@ -60,7 +60,6 @@ html, body {
 }
 
 .upload-title-input-container {
-    padding-bottom: 15px;
     position: relative;
 }
 
@@ -111,6 +110,7 @@ html, body {
 .file-upload-container-large {
   /* min-height: 300px; */
   min-height: 40vh;
+  max-height: 70vh;
 }
 
 
@@ -118,7 +118,7 @@ html, body {
 .submit-button {
     font-family: 'Lexend Deca', sans-serif;
     font-size: 1rem;
-    /* font-weight: 700; */
+    font-weight: 800;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -129,6 +129,9 @@ html, body {
     outline: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 70px;
+    margin-bottom: 10px;
+
 }
 
 .hover {
@@ -147,6 +150,7 @@ html, body {
 
 .file-preview-container {
     height: 100%;
+    max-height: 70vh;
     width: 100%;
 }
 
@@ -163,6 +167,7 @@ html, body {
 .file-wrapper {
     display: inline-block;
     position: relative;
+    height: 100%;
     max-height: 70vh;
     max-width: 100%;
 }
@@ -214,6 +219,8 @@ html, body {
     margin-top: 7px;
     padding-right: 15px;
     font-size: 0.9rem;
+    margin-top: 77px;
+    /* margin-bottom: 10px; */
 }
 
 .statement {
@@ -467,8 +474,13 @@ html, body {
     border-radius: 5px;
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
-    height: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    width: 90%;
+    /* height: 70px; */
     color: var(--primary);
+    margin-bottom: 15px;
 }
 
 
@@ -483,17 +495,25 @@ html, body {
     float: left;
     /* margin: 5px;
     padding: 5px; */
-    margin-top: 5px;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
     padding-top: 5px;
     border-radius: 5px;
     background-color: var(--fourth);
     /* min-width: 20px; */
-    width: calc(72% / 7);
+    width: calc(93% / 7);
     text-align: center;
   }
 
+
+  .control-label {
+      font-size: 0.7rem;
+      background-color: var(--third);
+      /* height: 30px; */
+      padding-left: 5px;
+      padding-right: 5px;
+      /* max-height: 30px; */
+  }
 
   .upload-controls-container {
 

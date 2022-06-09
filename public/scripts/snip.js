@@ -4,7 +4,7 @@ const db = firebase.firestore();
 
 // elements
 const fileInsideText = document.querySelector('.file-upload-inside-text');
-const fileWrapperEl = document.querySelector('.file-wrapper');
+// const fileWrapperEl = document.querySelector('.file-wrapper');
 const filePreviewEl = document.querySelector('.file-preview');
 
 
@@ -64,8 +64,8 @@ class Upload {
             filePreviewEl.id = this.file.id;            
             const DURL =  window.URL.createObjectURL(this.file);
             filePreviewEl.src = DURL;
-            fileWrapperEl.hidden = false;   
-            fileWrapperEl.style.width = '100%';
+            filePreviewEl.hidden = false;   
+            // fileWrapperEl.style.width = '100%';
             fileInsideText.hidden = true;      
             if(this.cropper) this.cropper.destroy();
 
@@ -88,7 +88,7 @@ class Upload {
             this.cropper.destroy();
             filePreviewEl.id = ''            
             filePreviewEl.src = '';
-            fileWrapperEl.hidden = true;
+            filePreviewEl.hidden = true;
             filePreviewEl.style.width = '100%';
         }
 
