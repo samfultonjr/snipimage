@@ -101,7 +101,7 @@ class Upload {
             filePreviewEl.hidden = false;
             // filePreviewEl.style.width = '100%';
             filePreviewEl.style.width = '';
-            filePreviewEl.title = 'rick';
+            // filePreviewEl.title = 'rick';
             document.querySelector('.upload-space').hidden = true;
             document.querySelector('.file-upload-container').classList.remove('file-upload-container-large');
             document.querySelector('.edit-controls').hidden = true;
