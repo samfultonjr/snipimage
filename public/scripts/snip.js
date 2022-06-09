@@ -1,6 +1,6 @@
 const MAX_UPLOAD_SIZE = 30000000; // 30mb
-const storage = firebase.storage();
-const db = firebase.firestore();
+// const storage = firebase.storage();
+// const db = firebase.firestore();
 
 // elements
 const fileInsideText = document.querySelector('.file-upload-inside-text');
