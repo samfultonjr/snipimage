@@ -146,6 +146,15 @@ class Upload {
             return;
         }
 
+        if((file.type.toLowerCase().match('gif'))) {
+            prompt.add({
+                message: 'GIFs not supported', 
+                level: 2, 
+                duration: 3000
+            });
+            return;
+        }
+
         if(file.size > MAX_UPLOAD_SIZE) {
             prompt.add({
                 message: 'Files larger than 30mb are not supported', 
