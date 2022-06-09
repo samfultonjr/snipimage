@@ -16,6 +16,10 @@ const spinLeftToggleEl = document.querySelector('.spin-left-toggle');
 const flipHorizontalToggleEl = document.querySelector('.flip-horizontal-toggle');
 const flipVerticalToggleEl = document.querySelector('.flip-vertical-toggle');
 
+const saveControlBackEl = document.querySelector('.back-control');
+const saveControlDownloadEl = document.querySelector('.download-control');
+
+
 
 class Upload {
     file = null;
@@ -23,6 +27,11 @@ class Upload {
     ratioLocked = true;
     horizontalFlipped = false;
     verticalFlipped = false;
+
+    stateType = 'upload';
+    // stateType = 'edit';
+    // stateType = 'save';
+
 
     constructor() {
         this.init();
@@ -60,7 +69,7 @@ class Upload {
 
     // Load file preview
     async refreshPreview () {
-        if(this.file) {
+        if(this.file &&  this.stateType === 'edit') {
             filePreviewEl.id = this.file.id;            
             const DURL =  window.URL.createObjectURL(this.file);
             filePreviewEl.src = DURL;
@@ -84,12 +93,38 @@ class Upload {
                 },
                 // fillColor: '#000'
               });
-        } else {
+              document.querySelector('.upload-space').hidden = true;
+        } else if( this.stateType === 'save') {
+            // displaying final product
+            this.cropper.destroy();
+            filePreviewEl.hidden = false;
+            // filePreviewEl.style.width = '100%';
+            filePreviewEl.style.width = '';
+            filePreviewEl.title = 'rick';
+            document.querySelector('.upload-space').hidden = true;
+            document.querySelector('.file-upload-container').classList.remove('file-upload-container-large');
+            document.querySelector('.edit-controls').hidden = true;
+            document.querySelector('.save-controls').hidden = false;
+            document.querySelector('.download-url').download = this.uuid() + '-snipImage';
+            document.querySelector('.download-url').href = filePreviewEl.src;
+            document.querySelector('.download-url').title = 'snip';
+        } else if( this.stateType === 'upload') {
+            // back to original upload page
             this.cropper.destroy();
             filePreviewEl.id = ''            
             filePreviewEl.src = '';
-            filePreviewEl.hidden = false;
-            filePreviewEl.style.width = '100%';
+            filePreviewEl.hidden = true;
+            filePreviewEl.style.width = '0';
+            document.querySelector('.file-upload-container').classList.add('file-upload-container-large');
+            fileInsideText.hidden = false;      
+            document.querySelector('.upload-space').hidden = false;
+            document.querySelector('.edit-controls').hidden = false;
+            document.querySelector('.save-controls').hidden = true;
+            this.file = null;
+            this.cropper = null;
+            this.ratioLocked = true;
+            this.horizontalFlipped = false;
+            this.verticalFlipped = false;
         }
 
     }
@@ -153,6 +188,7 @@ class Upload {
             for (const file of evt.dataTransfer.files) {
                 this.addFile(file);
             }
+            this.stateType = 'edit';
             this.refreshPreview();
         }
         // FILE DROP ZONE
@@ -164,6 +200,7 @@ class Upload {
                 this.addFile(file);
             }
             selectButton.value = '';
+            this.stateType = 'edit';
             this.refreshPreview();
         });
         // FILE CLICK SELECT
@@ -231,6 +268,15 @@ class Upload {
         });
 
 
+        saveControlBackEl.addEventListener('click', () => {
+            this.stateType = 'upload';
+
+            this.refreshPreview();
+        });
+
+        // saveControlDownloadEl.addEventListener('click', () => {
+            
+        // })
 
 
         // SUBMIT BUTTON
@@ -257,11 +303,17 @@ class Upload {
             let croppedCanvas = (await this.cropper.getCroppedCanvas());
             let durl = croppedCanvas.toDataURL();
 
+            this.stateType = 'edit';
             this.removeFile();
 
             filePreviewEl.src = durl;
 
+            this.stateType = 'save';
+            this.refreshPreview();
+
             submitButton.classList.remove('disabled');
+
+
         });
         // SUBMIT BUTTON
     }
