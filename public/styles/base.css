@@ -20,6 +20,8 @@
     --reddit-accent: #FF5700;
 
     --accent: #f5b8f2;
+
+    --pb-accent: #b898f3;
     
     --accent-backup: #b898f3;
 
@@ -163,7 +165,7 @@ button {
     color: var(--white);
     font-size: 1.4rem;
     cursor: pointer;
-    max-width: 150px;
+    /* max-width: 150px; */
     float: left;
 }
 
@@ -178,9 +180,26 @@ button {
     font-size: 0.6rem;
     padding-top: 10px;
     color: var(--grey-white);
-    max-width: 100px;
+    max-width: 200px;
     text-align: center;
 }
+
+.pb-tag {
+    font-size: 0.6rem;
+    padding-top: 15px;
+    color: var(--grey-white);
+    /* max-width: 200px; */
+    float: left;
+    /* padding-left: 40px; */
+}
+
+
+.pb-by {
+    float: left;
+    padding-right: 3px;
+    padding-left: 5px;
+}
+
 
 .footer {
     /* bottom: 0;
@@ -244,6 +263,10 @@ button {
 
 .accent-text {
     color: var(--accent);
+}
+
+.pb-accent-text {
+    color: var(--pb-accent);
 }
 
 .noselect {
