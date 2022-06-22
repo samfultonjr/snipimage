@@ -22,19 +22,21 @@ const saveControlDownloadEl = document.querySelector('.download-control');
 
 
 class Upload {
-    file = null;
-    cropper = null;
-    ratioLocked = true;
-    horizontalFlipped = false;
-    verticalFlipped = false;
 
-    stateType = 'upload';
     // stateType = 'edit';
     // stateType = 'save';
 
 
     constructor() {
         this.init();
+
+        this.file = false;
+        this.cropper = false;
+        this.ratioLocked = true;
+        this.horizontalFlipped = false;
+        this.verticalFlipped = false;
+    
+        this.stateType = 'upload';
     }
 
 

@@ -19,7 +19,7 @@ class Prompt {
         if(this.remover) {
             clearTimeout(this.remover);
         }
-        this.remover = setTimeout(()=>{
+        this.remover = setTimeout(function (){
             this.clear();
         }, duration);
     }
@@ -121,55 +121,55 @@ function isInViewport(element) {
     
 
 // let contentContainerEl =  document.querySelector('div.content-container');
-let footerEl = document.querySelector('div.footer');
-footerEl.classList.add('invisible');
+// let footerEl = document.querySelector('div.footer');
+// footerEl.classList.add('invisible');
 
-let scrollTimeout = setTimeout(()=> {}, 100);
-let oldScrollY = scrollY;
+// let scrollTimeout = setTimeout(()=> {}, 100);
+// let oldScrollY = scrollY;
 
-document.addEventListener('scroll', function(e) {
+// document.addEventListener('scroll', function(e) {
 
-    // if at bottom of page
-    // if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-    //     footerEl.classList.remove('invisible');
-    //     console.log('Scrolled to bottom');
-    // } else
+//     // if at bottom of page
+//     // if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+//     //     footerEl.classList.remove('invisible');
+//     //     console.log('Scrolled to bottom');
+//     // } else
 
-    // contentFit();
+//     // contentFit();
 
-    if(scrollY < oldScrollY) {
-         // if scrolling up
-        // clearTimeout(scrollTimeout);
-        // footerEl.classList.remove('invisible');
-        // scrollTimeout = setTimeout(() => {
-        //     footerEl.classList.add('invisible');
-        // }, 1000) ;
-        // console.log('Scrolled up');
-    } else {
-        // scrolling down, remove footer for visibility
+//     if(scrollY < oldScrollY) {
+//          // if scrolling up
+//         // clearTimeout(scrollTimeout);
+//         // footerEl.classList.remove('invisible');
+//         // scrollTimeout = setTimeout(() => {
+//         //     footerEl.classList.add('invisible');
+//         // }, 1000) ;
+//         // console.log('Scrolled up');
+//     } else {
+//         // scrolling down, remove footer for visibility
 
-        const body = document.body;
-        const html = document.documentElement;
+//         const body = document.body;
+//         const html = document.documentElement;
 
-        const totalHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
-        if ((window.innerHeight + window.scrollY) >= (totalHeight)) {
-            // at bottom
-            clearTimeout(scrollTimeout);
-            footerEl.classList.remove('invisible');
-            scrollTimeout = setTimeout(() => {
-                footerEl.classList.add('invisible');
-            }, 10000) ;
-            // console.log('Scrolled to bottom');
-        } else {
-            clearTimeout(scrollTimeout);
-            footerEl.classList.add('invisible');
-            // console.log('Scrolled down');
-        }
+//         const totalHeight = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+//         if ((window.innerHeight + window.scrollY) >= (totalHeight)) {
+//             // at bottom
+//             clearTimeout(scrollTimeout);
+//             footerEl.classList.remove('invisible');
+//             scrollTimeout = setTimeout(() => {
+//                 footerEl.classList.add('invisible');
+//             }, 10000) ;
+//             // console.log('Scrolled to bottom');
+//         } else {
+//             clearTimeout(scrollTimeout);
+//             footerEl.classList.add('invisible');
+//             // console.log('Scrolled down');
+//         }
 
-    }
+//     }
 
-    oldScrollY = scrollY;
-});
+//     oldScrollY = scrollY;
+// });
 
 
 
