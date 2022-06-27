@@ -1,0 +1,3 @@
+User-Agent: *
+Allow: /
+Sitemap: https://snipimage.com/sitemap.xml
