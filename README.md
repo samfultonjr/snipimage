@@ -1,3 +1,3 @@
 # snipimage
 
-Live Demo: [website [(https://samfultonjr.github.io/snipimage)](https://samfultonjr.github.io/snipimage/)]
+Live Demo: Live Demo: https://samfultonjr.github.io/snipimage/
